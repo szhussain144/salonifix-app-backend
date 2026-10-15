@@ -1,0 +1,593 @@
+@import "tailwindcss";
+
+/* Salonifix theme, matching the marketing site (Exelogy palette): warm
+   off-white ground, ink #202235, primary purple #7429C3, navy top bar.
+   Shapes: buttons are full pills, cards 18px, inputs 12px. */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: #fcfaf6;
+  --color-panel: #fffefc;
+  --color-panel-alt: #f3f0e9;
+  --color-card: #fffefc;
+  --color-border: #e2dfe9;
+  --color-border-soft: #ece9f0;
+
+  --color-accent: #7429c3;
+  --color-accent-dark: #5118a5;
+  --color-accent-ink: #fffefc;
+  --color-accent-soft: #efe6fb;
+
+  --color-ink: #202235;
+  --color-ink-2: #3f4256;
+  --color-muted: #586571;
+  --color-faint: #6e7683;
+
+  --color-green: #2f7d5b;
+  --color-red: #c9302f;
+  --color-blue: #47769d;
+  --color-orange: #a86a12;
+
+  /* The product top bar, dark in every view. */
+  --color-navy: #18324a;
+  --color-navy-ink: #fcfaf6;
+  --color-navy-ink-2: #d3d8e6;
+  --color-navy-accent: #d9b8ff;
+
+  --color-g-violet: #b48af7;
+  --color-g-orchid: #de9bdb;
+  --color-g-mist: #e9e0fa;
+  --color-g-iris: #9b7bf0;
+
+  --radius-card: 18px;
+  --radius-input: 12px;
+}
+
+:root {
+  --banner: linear-gradient(105deg, #18324a 0%, #5118a5 52%, #a855f7 100%);
+  --shadow-card: 0 1px 2px rgba(32, 34, 53, 0.04), 0 8px 24px -12px rgba(32, 34, 53, 0.12);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 22%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d9d4e2;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c5bdd3;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Soft violet/orchid wash behind page headers, as on the marketing site. */
+.wash {
+  position: relative;
+  isolation: isolate;
+}
+
+.wash::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 340px;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 60% at 10% 0%, color-mix(in srgb, var(--color-g-violet) 45%, transparent), transparent 70%),
+    radial-gradient(30% 55% at 55% 0%, color-mix(in srgb, var(--color-g-orchid) 35%, transparent), transparent 70%),
+    radial-gradient(34% 60% at 95% 5%, color-mix(in srgb, var(--color-g-mist) 90%, transparent), transparent 70%);
+  filter: blur(24px);
+  mask-image: linear-gradient(to bottom, #000 30%, transparent);
+}
+
+/* Navy-to-violet band for hero stats, like the site's call-to-action. */
+.banner {
+  background: var(--banner);
+  color: var(--color-accent-ink);
+}
+
+/* FullCalendar ---------------------------------------------------------- */
+.fc {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-panel);
+  --fc-border-color: var(--color-border-soft);
+  --fc-today-bg-color: color-mix(in srgb, var(--color-accent) 7%, transparent);
+  --fc-neutral-bg-color: var(--color-panel-alt);
+  --fc-page-bg-color: var(--color-panel);
+}
+
+.fc .fc-button {
+  border: none;
+  background: transparent;
+  color: var(--color-ink);
+  box-shadow: none;
+}
+
+.fc .fc-button:hover,
+.fc .fc-button:focus {
+  background: var(--color-panel-alt);
+}
+
+.fc .fc-col-header-cell,
+.fc .fc-timegrid-col-header {
+  font-weight: 600;
+  font-size: 12px;
+  background-color: var(--color-panel-alt);
+  color: var(--color-ink-2);
+}
+
+.fc .fc-col-header-cell-cushion {
+  padding: 8px 4px;
+}
+
+.fc .fc-daygrid-day-number,
+.fc .fc-timegrid-slot-label {
+  color: var(--color-muted);
+  font-size: 12px;
+}
+
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  border-radius: 999px;
+  min-width: 24px;
+  text-align: center;
+  margin: 4px;
+  padding: 2px 6px;
+}
+
+.fc .fc-daygrid-event,
+.fc .fc-event {
+  background: color-mix(in srgb, var(--color-accent) 14%, var(--color-panel));
+  color: var(--color-ink);
+  border: none;
+  border-left: 3px solid var(--color-accent);
+  border-radius: 8px;
+  padding: 1px 4px;
+}
+
+.fc .fc-event .fc-event-main,
+.fc .fc-event .fc-event-title,
+.fc .fc-event .fc-event-time {
+  color: var(--color-ink);
+}
+
+/* Service-coloured chips draw their own fill and edge (see CalendarPage). */
+.fc .fc-event.svc-event {
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 0;
+  box-shadow: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.fc .fc-event.svc-event .fc-event-main {
+  padding: 0;
+  height: 100%;
+}
+
+.fc .fc-daygrid-block-event.svc-event {
+  margin: 1px 4px 2px;
+}
+
+.fc .fc-event.svc-event:hover {
+  transform: translateY(-1px);
+}
+
+.fc .fc-timegrid-event-harness-inset .fc-timegrid-event.svc-event {
+  box-shadow: 0 0 0 2px var(--color-panel);
+}
+
+.fc .fc-event.svc-event.is-dimmed {
+  opacity: 0.22;
+}
+
+.fc .fc-timegrid-now-indicator-line {
+  border-color: var(--color-red);
+  border-width: 2px 0 0;
+}
+
+.fc .fc-timegrid-now-indicator-arrow {
+  border-color: var(--color-red);
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.fc .fc-daygrid-dot-event .fc-daygrid-event-dot {
+  border-color: var(--color-accent);
+}
+
+.fc .fc-daygrid-more-link {
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.fc .fc-scrollgrid {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.w-40 {
+  width: 10rem !important;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.page-enter {
+  animation: rise 0.45s var(--ease) both;
+}
+
+/* Detail drawer: panel slides in from the right over a fading backdrop. */
+@keyframes drawer-in {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.drawer-slide {
+  animation: drawer-in 0.32s var(--ease) both;
+}
+
+.drawer-fade {
+  animation: fade-in 0.25s ease-out both;
+}
+
+@keyframes loadbar {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+
+/* The bell swings when a new notification arrives (not for people who prefer less motion). */
+@keyframes bell-ring {
+  0%, 100% { transform: rotate(0); }
+  15% { transform: rotate(16deg); }
+  30% { transform: rotate(-14deg); }
+  45% { transform: rotate(10deg); }
+  60% { transform: rotate(-6deg); }
+  75% { transform: rotate(3deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[bell-ring_0\.9s_ease-in-out\] {
+    animation: none;
+  }
+}
+
+/* Motion ------------------------------------------------------------------
+   Small, quick and calm: things settle into place rather than bounce. Entrances use
+   fill-mode "backwards" so nothing is held after they finish (hover effects still work). */
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(28px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateX(28px) scale(0.96);
+  }
+}
+
+@keyframes toast-timer {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes sheen {
+  from {
+    transform: translateX(-130%) skewX(-20deg);
+  }
+  to {
+    transform: translateX(330%) skewX(-20deg);
+  }
+}
+
+@keyframes banner-drift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes wash-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2.5%, 8px, 0) scale(1.05);
+  }
+}
+
+/* Cards rise into place one after another when a page opens. */
+/* Longhands, not the shorthand: a shorthand holding var() would override the delay. */
+.card-in {
+  animation-name: rise;
+  animation-duration: 0.5s;
+  animation-timing-function: var(--ease);
+  animation-fill-mode: backwards;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+.card-in:nth-child(2) { --i: 1; }
+.card-in:nth-child(3) { --i: 2; }
+.card-in:nth-child(4) { --i: 3; }
+.card-in:nth-child(5) { --i: 4; }
+.card-in:nth-child(6) { --i: 5; }
+.card-in:nth-child(7) { --i: 6; }
+.card-in:nth-child(n + 8) { --i: 7; }
+
+/* Table rows ripple in, top to bottom (only the first screenful waits). */
+.row-in {
+  animation-name: fade-in;
+  animation-duration: 0.35s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: backwards;
+  animation-delay: calc(var(--r, 0) * 22ms);
+}
+.row-in:nth-child(2) { --r: 1; }
+.row-in:nth-child(3) { --r: 2; }
+.row-in:nth-child(4) { --r: 3; }
+.row-in:nth-child(5) { --r: 4; }
+.row-in:nth-child(6) { --r: 5; }
+.row-in:nth-child(7) { --r: 6; }
+.row-in:nth-child(8) { --r: 7; }
+.row-in:nth-child(9) { --r: 8; }
+.row-in:nth-child(10) { --r: 9; }
+.row-in:nth-child(n + 11) { --r: 10; }
+
+/* Dialogs pop up; menus and popovers drop down from their button. */
+.pop-in {
+  animation: pop-in 0.34s var(--ease) backwards;
+}
+.menu-in {
+  animation: menu-in 0.2s var(--ease) backwards;
+  transform-origin: top center;
+}
+
+/* The mega menu unfolds under the bar; its links follow, column by column. */
+@keyframes mega-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 -40px 0);
+    transform: none;
+  }
+}
+.mega-in {
+  animation: mega-in 0.32s var(--ease) backwards;
+}
+.mega-item {
+  animation-name: rise;
+  animation-duration: 0.36s;
+  animation-timing-function: var(--ease);
+  animation-fill-mode: backwards;
+  animation-delay: calc(60ms + var(--m, 0) * 28ms);
+}
+.mega-veil {
+  animation: fade-in 0.25s ease-out backwards;
+}
+
+.toast-in {
+  animation: toast-in 0.4s var(--ease) backwards;
+}
+.toast-out {
+  animation: toast-out 0.22s ease-in forwards;
+}
+.toast-timer {
+  transform-origin: left;
+  animation: toast-timer linear forwards;
+}
+
+/* A soft light sweeps across main buttons on hover. */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 35%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+  transform: translateX(-130%) skewX(-20deg);
+  pointer-events: none;
+}
+.btn-primary:hover::after {
+  animation: sheen 0.85s var(--ease);
+}
+
+/* The purple bands and the header glow drift slowly, so the page feels alive. */
+.banner {
+  background-size: 180% 180%;
+  animation: banner-drift 16s ease-in-out infinite;
+}
+.wash::before {
+  animation: wash-drift 18s ease-in-out infinite;
+}
+/* A purple stat card both rises in and drifts. */
+.card-in.banner {
+  animation-name: rise, banner-drift;
+  animation-duration: 0.5s, 16s;
+  animation-timing-function: var(--ease), ease-in-out;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: backwards, none;
+  animation-delay: calc(var(--i, 0) * 55ms), 0s;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Less motion (the device asks for it, e.g. Windows "Animation effects" off): nothing slides,
+   drifts, sweeps or counts; things still fade in gently, which reads as calm, not as motion. */
+@media (prefers-reduced-motion: reduce) {
+  .page-enter,
+  .card-in,
+  .pop-in,
+  .menu-in,
+  .mega-in,
+  .mega-item,
+  .toast-in,
+  .drawer-slide {
+    animation-name: fade-in;
+  }
+  .card-in.banner {
+    animation-name: fade-in, none;
+  }
+  .toast-out {
+    animation-name: fade-out;
+  }
+  .banner,
+  .wash::before,
+  .btn-primary:hover::after,
+  .toast-timer {
+    animation: none;
+  }
+  .toast-timer {
+    display: none;
+  }
+  [role="tablist"] > span[aria-hidden] {
+    transition: none;
+  }
+}
+
+/* Printing a payslip: only the .print-area is printed, without buttons and forms. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
