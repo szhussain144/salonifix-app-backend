@@ -15,7 +15,6 @@ import {
   Package,
   PhoneCall,
   Receipt,
-  Scissors,
   ShieldCheck,
   Star,
   UserPlus,
@@ -25,6 +24,7 @@ import {
   VolumeX,
   Wallet,
 } from "lucide-react";
+import ChairIcon from "./ChairIcon";
 import { Segmented } from "./ui";
 import { useSession } from "../context/SessionContext";
 import { quietFetch } from "../context/quietFetch";
@@ -37,8 +37,8 @@ const ICONS = {
   booking: CalendarCheck,
   client: Users,
   staff: UserRound,
-  service: Scissors,
-  service_category: Scissors,
+  service: ChairIcon,
+  service_category: ChairIcon,
   product: Package,
   product_category: Package,
   inventory: Package,

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { HandCoins, Scissors, Star, Trophy, UserRound, Wallet } from "lucide-react";
+import { HandCoins, Star, Trophy, UserRound, Wallet } from "lucide-react";
+import ChairIcon from "./ChairIcon";
 import { Avatar, Card, EmptyState, StatCard } from "./ui";
 import { CompareLegend, CompareRankBars, DataTable, ViewToggle } from "./charts";
 import Change from "./ReportChange";
@@ -41,7 +42,7 @@ export default function StaffReport({ range, compare, rangeName, previousName })
           label="Services done"
           value={formatCount(t.services)}
           sub={<Change value={t.prev_services ? Math.round(((t.services - t.prev_services) / t.prev_services) * 1000) / 10 : null} current={t.services} previous={t.prev_services} against={against} />}
-          icon={Scissors}
+          icon={ChairIcon}
         />
         <StatCard label={`Sales per ${terms.staff.toLowerCase()}`} value={money(t.sales_per_staff)} sub={<span className="text-[11.5px] text-[var(--color-faint)]">{formatCount(t.staff_count)} people working</span>} icon={UserRound} />
         <StatCard

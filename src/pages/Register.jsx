@@ -132,7 +132,7 @@ export default function Register() {
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <Input label="Business name" placeholder="e.g. Waseem Salon" value={form.business_name} onChange={update("business_name")} />
+                <Input label="Business name" placeholder="e.g. Glow Studio" value={form.business_name} onChange={update("business_name")} />
                 {fieldError("business_name")}
               </div>
               <div>

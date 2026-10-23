@@ -10,11 +10,11 @@ import {
   Package,
   Plus,
   Receipt,
-  Scissors,
   TrendingUp,
   UserRound,
   Users,
 } from "lucide-react";
+import ChairIcon from "../components/ChairIcon";
 import { Card, SectionTitle, Badge, Avatar, Button, EmptyState, StatCard } from "../components/ui";
 import { DataTable, Meter, Sparkline, TrendChart, ViewToggle } from "../components/charts";
 import { formatAmount, formatCount, formatDay, initialsOf, todayISO, toNumber } from "../components/format";
@@ -28,7 +28,7 @@ const quickActions = [
   { label: "New booking", icon: CalendarPlus, to: "/new-booking", screen: "bookings" },
   { label: "Appointments", icon: ClipboardList, to: "/bookings", screen: "bookings" },
   { label: "Clients", icon: Users, to: "/clients", screen: "clients" },
-  { label: "Services", icon: Scissors, to: "/services", screen: "services" },
+  { label: "Services", icon: ChairIcon, to: "/services", screen: "services" },
   { label: "Staff", icon: UserRound, to: "/staff", screen: "staff" },
   { label: "Products", icon: Package, to: "/products", screen: "products" },
   { label: "Expenses", icon: Receipt, to: "/expenses", screen: "expenses" },

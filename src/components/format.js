@@ -75,7 +75,7 @@ export function formatDay(iso, { long = false } = {}) {
     : `${d.toLocaleDateString(dateLocale(), { weekday: "short" })} ${d.getDate()}`;
 }
 
-/* "Waseem Ahmed" -> "WA"; tolerates null and extra spaces. */
+/* "Ayesha Khan" -> "AK"; tolerates null and extra spaces. */
 export const initialsOf = (name) =>
   String(name || "?")
     .trim()

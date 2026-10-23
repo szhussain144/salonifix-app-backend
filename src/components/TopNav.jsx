@@ -25,13 +25,13 @@ import {
   PhoneCall,
   Plus,
   Receipt,
-  Scissors,
   Settings,
   UserRound,
   Wallet,
   Users,
   X,
 } from "lucide-react";
+import ChairIcon from "./ChairIcon";
 import Mark from "./Mark";
 import NotificationBell from "./NotificationBell";
 import { useSession } from "../context/SessionContext";
@@ -104,7 +104,7 @@ const buildNav = (t) => [
       {
         title: "Menu & stock",
         items: [
-          { to: "/services", label: "Services", icon: Scissors, screen: "services", short: "Menu, pricing, and durations." },
+          { to: "/services", label: "Services", icon: ChairIcon, screen: "services", short: "Menu, pricing, and durations." },
           { to: "/products", label: "Products", icon: Package, screen: "products", short: "Retail catalogue and stock." },
           { to: "/inventory", label: "Inventory", icon: Boxes, screen: "inventory", short: "Stock levels and reorder alerts." },
         ],
